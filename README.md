@@ -50,6 +50,31 @@ Click en la Imagen.
 
 El analisis de estre proyecto nos ayuda a comprender como interactuan las diferentes partes en un sistema con multiples servicios. Tambien nos ubican en las nuevas tecnologías que se están utilizando hoy en dia. 
 
+En este proyecto se pueden ubicar los archivos mas importantes, entre estos estan:
+
+### client/src/Fib.js
+Este archivo es el que se encarga de manejar el input, el envio de la información, la actualización de la informacion y el muestreo en pantalla.
+
+### nginx/default.conf
+
+Este archivo configura al nginx para conectar el api y el cliente en uno solo, permitiendo acceder a ellos mediante un unico puerto.
+
+### Server/index.js
+Este archivo es el que se encarga de recibir todas las consultas get y post, asi como enviar esa informacion a la base de datos. Tambien contiene un codigo especifico de redis que publica el canal insert, el cual permite el el worker pueda funcionar.
+
+### Worker/index.js
+Este archivo espera suscrito al canal insert y cuando envian la publicacion este obtiene el indice y realiza el calculo, para su posterior almacenamiento en redis.
+
+### docker-compose.yml
+Gracias a este archivo se crean todos los contenedores necesarios bajo un nombre en especifico y se conectan internamente entre ellos mediante la red interna que crea.
+
+### */keys.js
+Estos archivos almacenan las credenciales necesarias para la conexion a las diferentes bases de datos.
+
+### client/public/index.html
+
+Este es el archivo donde se carga toda la informacion enviada por react, gracias al div que tiene el ID " root ", sin este no se mostraria nada de la aplicacion.
+
 ## Posibles mejoras
 Tras analizar profundamente el codigo del proyecto, he localizado varios casos de mejora:
 
